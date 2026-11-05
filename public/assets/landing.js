@@ -1,9 +1,8 @@
-// NotaSimples — checkout Abitech (nfse_*) + ciclo de cobrança.
+// NotaSimples — demo Abitech-style + checkout Abitech (nfse_*).
 (() => {
   'use strict';
 
   const BILLING = 'https://abitech.com.br';
-  // Alinhado ao billing atual (rename notasimples_nfse pendente no overlay).
   const PRODUTO_NFSE = 'marca_tbd_nfse';
 
   let PLANOS = {
@@ -40,6 +39,33 @@
       localStorage.removeItem(CHAVE_PARCEIRO);
     } catch { /* ignora */ }
     return '';
+  }
+
+  function demonstrar() {
+    const demo = $('#demo');
+    if (!demo) return;
+    const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const alvo = $('#demo-texto');
+    if (!alvo) return;
+    const frase = alvo.textContent;
+    if (reduzir) {
+      demo.classList.remove('animar');
+      return;
+    }
+    alvo.textContent = '';
+    let i = 0;
+    const digitar = () => {
+      i += 1;
+      alvo.textContent = frase.slice(0, i);
+      if (i < frase.length) {
+        setTimeout(digitar, 28 + Math.random() * 30);
+      } else {
+        setTimeout(() => demo.classList.add('fase-2'), 350);
+        setTimeout(() => demo.classList.add('fase-3'), 850);
+        setTimeout(() => demo.classList.add('fase-4'), 1450);
+      }
+    };
+    setTimeout(digitar, 400);
   }
 
   function precoDe(id) {
@@ -189,6 +215,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     guardarParceiro();
+    demonstrar();
     renderizarPrecos();
     carregarPlanos();
 

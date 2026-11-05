@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NotaSimples — NFS-e em minutos</title>
-  <meta name="description" content="Emita NFS-e no Padrão Nacional. Rápido para MEI e ME, com planos para prestador e escritório. Billing Abitech.">
+  <title>NotaSimples — NFS-e sem enrolação</title>
+  <meta name="description" content="Emita NFS-e no Padrão Nacional. Para MEI, ME e escritórios. Assinatura pela Abitech; painel em notasimples.tech.">
   <meta name="theme-color" content="#06101f">
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="/assets/favicon.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap">
   <link rel="preload" as="image" href="/assets/logo-notasimples.jpg">
-  <link rel="stylesheet" href="/assets/site.css">
-  <script src="/assets/landing.js" defer></script>
+  <link rel="stylesheet" href="/assets/site.css?v=20261105-hero">
+  <script src="/assets/landing.js?v=20261105-hero" defer></script>
 </head>
 <body>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -21,11 +21,10 @@
   <header class="topo">
     <div class="miolo">
       <a class="marca" href="/" aria-label="NotaSimples — início">
-        <img src="/assets/logo-notasimples.jpg" alt="NotaSimples" width="512" height="512">
+        <img class="logo" src="/assets/logo-notasimples.jpg" alt="NotaSimples" width="512" height="512">
       </a>
       <nav aria-label="Principal">
         <a href="#como-funciona">Como funciona</a>
-        <a href="#recursos">Recursos</a>
         <a href="#planos">Planos</a>
         <a href="#duvidas">Dúvidas</a>
       </nav>
@@ -37,150 +36,201 @@
   </header>
 
   <main id="conteudo">
+    <!-- Hero à la Abitech pré-vitrine: marca no topo + headline + 1 apoio + CTAs + demo. Sem cards. -->
     <section class="hero">
-      <div class="miolo hero-miolo">
-        <img class="hero-marca" src="/assets/logo-notasimples.jpg" alt="NotaSimples" width="720" height="720">
-        <h1>NFS-e sem enrolação.</h1>
-        <p class="apoio">Para MEI e ME que precisam emitir nota de serviço agora — e para o escritório que cuida de vários clientes. Padrão Nacional, PDF e XML na mesma rotina da Abitech.</p>
-        <div class="chamadas">
-          <a class="botao" href="/entrar">Entrar e emitir</a>
-          <a class="botao vazado" href="#planos">Ver planos</a>
+      <div class="miolo">
+        <div>
+          <h1>NFS-e sem enrolação.</h1>
+          <p class="apoio">Para MEI e ME que precisam emitir nota de serviço agora — e para o escritório que cuida de vários clientes. Padrão Nacional, PDF e XML na mesma rotina.</p>
+          <div class="chamadas">
+            <button class="botao" type="button" data-assinar="nfse_prestador">Assinar Prestador</button>
+            <a class="botao vazado" href="/entrar">Entrar no painel</a>
+          </div>
+          <p class="onde">Assinatura e pagamento pela Abitech. O painel de emissão fica em notasimples.tech.</p>
         </div>
-        <p class="onde">Assinatura e pagamento pela Abitech. O painel de emissão fica em notasimples.tech.</p>
+
+        <div class="demo animar" id="demo" aria-label="Exemplo: um pedido vira uma NFS-e autorizada">
+          <p class="pedido"><span id="demo-texto">Emite uma NFS-e de R$ 500 para a XPTO, consultoria de outubro.</span><span class="cursor" aria-hidden="true"></span></p>
+          <p class="confirmar"><span class="ok" aria-hidden="true">✓</span> Você conferiu o resumo e confirmou.</p>
+          <article class="nota" aria-label="NFS-e de exemplo">
+            <div class="nota-cabeca">
+              <span class="nota-titulo">NFS-e</span>
+              <span class="nota-numero">nº 126</span>
+            </div>
+            <dl>
+              <dt>Prestador</dt><dd>Souza Consultoria</dd>
+              <dt>Tomador</dt><dd>XPTO Comércio Ltda</dd>
+              <dt>Serviço</dt><dd>Consultoria, competência 10/2026</dd>
+              <dt>Valor</dt><dd class="valor">R$ 500,00</dd>
+            </dl>
+            <p class="chave">Chave 3170 1072 2112 2233 3000 1810 0000 0000 0001 2610 0000 0000 17</p>
+            <span class="carimbo" aria-hidden="true">AUTORIZADA</span>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="secao" id="como-funciona">
       <div class="miolo">
         <div class="secao-cabeca">
-          <h2>Do cadastro à nota em poucos passos</h2>
+          <h2>Do cadastro à nota</h2>
           <p>Fluxo curto, pensado para quem emite sozinho ou pelo contador.</p>
         </div>
-        <ol class="passos">
+        <ul class="pedidos">
           <li>
-            <span class="passo-n">1</span>
-            <div>
-              <h3>Assine pela Abitech</h3>
-              <p>Escolha Prestador ou Escritório, pague no Asaas e receba o link de ativação — o mesmo padrão do Emissor Abitech.</p>
-            </div>
+            <span class="frase">Assine Prestador ou Escritório</span>
+            <span class="resultado">Pague na Abitech (Asaas), receba o link de ativação e defina a senha — o mesmo padrão do Emissor.</span>
           </li>
           <li>
-            <span class="passo-n">2</span>
-            <div>
-              <h3>Entre e configure a empresa</h3>
-              <p>Envie o certificado A1 ou autorize a Abitech na Receita (serviço NFS-e). Sem misturar NF-e nem NFC-e.</p>
-            </div>
+            <span class="frase">Configure a empresa uma vez</span>
+            <span class="resultado">Envie o certificado A1 ou autorize a Abitech na Receita (serviço NFS-e). Sem misturar NF-e nem NFC-e.</span>
           </li>
           <li>
-            <span class="passo-n">3</span>
-            <div>
-              <h3>Emita, copie e envie</h3>
-              <p>Liste, cancele quando o ADN permitir, gere DANFSe/PDF e mande PDF/XML por e-mail ao tomador.</p>
-            </div>
+            <span class="frase">Emita, copie e envie</span>
+            <span class="resultado">Liste, cancele quando o ADN permitir, gere DANFSe/PDF e mande PDF/XML por e-mail ao tomador.</span>
           </li>
-        </ol>
+        </ul>
       </div>
     </section>
 
-    <section class="secao tom" id="recursos">
+    <section class="secao branca" id="para-quem">
       <div class="miolo">
         <div class="secao-cabeca">
-          <h2>O essencial para emitir bem</h2>
-          <p>Inspirado no que o mercado espera de um emissor de serviço leve — com copy e UX próprios.</p>
+          <h2>Para quem emite serviço todo mês</h2>
         </div>
-        <ul class="lista-recursos">
-          <li>
-            <h3>Padrão Nacional (ADN)</h3>
-            <p>Emissão alinhada ao Emissor Nacional / municípios conveniados. Sem labirinto de portal municipal no MVP.</p>
-          </li>
-          <li>
-            <h3>A1 ou autorização Abitech</h3>
-            <p>Use o certificado da empresa ou autorize o CNPJ Abitech na Receita (NFS-e 00233) e emita sem subir .pfx.</p>
-          </li>
-          <li>
-            <h3>Cópia rápida e e-mail</h3>
-            <p>Repita a última nota, baixe DANFSe e envie PDF/XML ao cliente sem sair do painel.</p>
-          </li>
-          <li>
-            <h3>Prestador e escritório</h3>
-            <p>Plano enxuto para quem emite na própria empresa; plano multi-empresa para o contador gerenciar clientes.</p>
-          </li>
-          <li>
-            <h3>Retry quando o ADN falha</h3>
-            <p>Fila de reprocesso básica — você não precisa “refazer na mão” a cada instabilidade.</p>
-          </li>
-          <li>
-            <h3>Upsell para NF-e quando precisar</h3>
-            <p>NotaSimples é só serviço. Produto e NFC-e ficam no Emissor completo Abitech, com link claro no painel.</p>
-          </li>
-        </ul>
+        <div class="publicos">
+          <div class="publico destaque">
+            <h3>Prestador</h3>
+            <p class="suave">Consultoria, clínica, agência, TI. Quem perde a tarde no portal no último dia do mês.</p>
+            <ul>
+              <li>NFS-e no Padrão Nacional*</li>
+              <li>A1 ou autorização Abitech</li>
+              <li>PDF, XML e e-mail ao tomador</li>
+              <li>Cópia rápida da última nota</li>
+            </ul>
+          </div>
+          <div class="publico">
+            <h3>Escritório</h3>
+            <p class="suave">Vários clientes, um só login. Multi-empresa sem virar Emissor completo.</p>
+            <ul>
+              <li>Até 20 empresas · 10 usuários</li>
+              <li>Mesmo núcleo de emissão</li>
+              <li>Ativação e cobrança Abitech</li>
+            </ul>
+          </div>
+        </div>
+        <div class="garantias">
+          <div><strong>Só NFS-e</strong><p>Produto e NFC-e ficam no Emissor Abitech, com upsell claro no painel.</p></div>
+          <div><strong>ADN com retry</strong><p>Fila básica quando o Sistema Nacional oscila — sem refazer na mão.</p></div>
+          <div><strong>Certificado seguro</strong><p>A1 criptografado no servidor; autorização Abitech quando preferir.</p></div>
+          <div><strong>Billing Abitech</strong><p>Pix, boleto ou cartão via Asaas — mesma rotina do Emissor.</p></div>
+        </div>
       </div>
     </section>
 
     <section class="secao" id="planos">
       <div class="miolo">
         <div class="secao-cabeca">
-          <h2>Planos simples</h2>
-          <p>Cobrança mensal ou anual pela Abitech. Trial de 15 dias no Prestador e no Escritório.</p>
+          <h2>Planos</h2>
+          <p>Cobrança mensal ou anual pela Abitech. Trial de 15 dias.</p>
         </div>
+
         <div class="ciclo" role="group" aria-label="Ciclo de cobrança">
           <button type="button" data-ciclo="mensal" aria-pressed="true">Mensal</button>
-          <button type="button" data-ciclo="anual" aria-pressed="false">Anual</button>
+          <button type="button" data-ciclo="anual" aria-pressed="false">Anual <span class="economia">· menos</span></button>
         </div>
-        <div class="planos-grade">
-          <article class="plano">
-            <h3>Prestador</h3>
-            <p class="preco" data-preco="nfse_prestador">R$ 39 <small>/mês</small></p>
-            <p class="cobranca" data-cobranca="nfse_prestador">cobrado todo mês</p>
-            <ul>
-              <li>NFS-e ilimitada no Padrão Nacional*</li>
-              <li>Até 2 empresas · 3 usuários</li>
-              <li>A1 ou autorização Abitech</li>
-              <li>PDF, XML e e-mail</li>
-            </ul>
-            <button class="botao" type="button" data-assinar="nfse_prestador">Assinar Prestador</button>
-          </article>
-          <article class="plano destaque">
-            <p class="selo">Para escritórios</p>
-            <h3>Escritório</h3>
-            <p class="preco" data-preco="nfse_escritorio">R$ 129 <small>/mês</small></p>
-            <p class="cobranca" data-cobranca="nfse_escritorio">cobrado todo mês</p>
-            <ul>
-              <li>Mesmo núcleo de emissão</li>
-              <li>Até 20 empresas · 10 usuários</li>
-              <li>Gestão multi-cliente</li>
-              <li>Mesma ativação Abitech</li>
-            </ul>
-            <button class="botao" type="button" data-assinar="nfse_escritorio">Assinar Escritório</button>
-          </article>
+
+        <div class="assinar-rapido">
+          <button class="botao" type="button" data-assinar="nfse_prestador">Assinar Prestador</button>
+          <button class="botao vazado" type="button" data-assinar="nfse_escritorio">Assinar Escritório</button>
         </div>
-        <p class="nota-planos">*Sujeito à adesão do município ao Sistema Nacional da NFS-e. Integração de pagamento e ativação: <a href="https://abitech.com.br">abitech.com.br</a>.</p>
+
+        <div class="tabela-rolagem">
+          <table class="planos">
+            <caption class="pular">Comparação dos planos</caption>
+            <thead>
+              <tr>
+                <th scope="col"><span class="pular">Recurso</span></th>
+                <th scope="col" data-plano="nfse_prestador">
+                  <span class="nome-plano">Prestador</span>
+                  <span class="preco" data-preco="nfse_prestador">R$ 39 <small>/mês</small></span>
+                  <span class="cobranca" data-cobranca="nfse_prestador">cobrado todo mês</span>
+                </th>
+                <th scope="col" class="recomendado" data-plano="nfse_escritorio">
+                  <span class="nome-plano">Escritório <span class="etiqueta">multi</span></span>
+                  <span class="preco" data-preco="nfse_escritorio">R$ 129 <small>/mês</small></span>
+                  <span class="cobranca" data-cobranca="nfse_escritorio">cobrado todo mês</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">NFS-e Padrão Nacional*</th>
+                <td class="sim">Ilimitada</td>
+                <td class="sim recomendado">Ilimitada</td>
+              </tr>
+              <tr>
+                <th scope="row">Empresas</th>
+                <td>até 2</td>
+                <td class="recomendado">até 20</td>
+              </tr>
+              <tr>
+                <th scope="row">Usuários</th>
+                <td>até 3</td>
+                <td class="recomendado">até 10</td>
+              </tr>
+              <tr>
+                <th scope="row">A1 ou autorização Abitech</th>
+                <td class="sim"></td>
+                <td class="sim recomendado"></td>
+              </tr>
+              <tr>
+                <th scope="row">PDF, XML e e-mail</th>
+                <td class="sim"></td>
+                <td class="sim recomendado"></td>
+              </tr>
+              <tr>
+                <th scope="row">Gestão multi-cliente</th>
+                <td class="nao">—</td>
+                <td class="sim recomendado"></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td><button class="botao" type="button" data-assinar="nfse_prestador">Assinar Prestador</button></td>
+                <td class="recomendado"><button class="botao" type="button" data-assinar="nfse_escritorio">Assinar Escritório</button></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="nota-rodape">*Sujeito à adesão do município ao Sistema Nacional da NFS-e. Pagamento e ativação: <a href="https://abitech.com.br">abitech.com.br</a>.</p>
       </div>
     </section>
 
-    <section class="secao tom" id="duvidas">
+    <section class="secao branca" id="duvidas">
       <div class="miolo">
         <div class="secao-cabeca">
           <h2>Dúvidas</h2>
         </div>
-        <dl class="faq">
-          <div>
-            <dt>Como entro para emitir?</dt>
-            <dd>Use <a href="/entrar">Entrar</a> no topo. Depois de pagar na Abitech e ativar a senha, o painel abre em notasimples.tech.</dd>
-          </div>
-          <div>
-            <dt>Preciso de certificado?</dt>
-            <dd>Sim — A1 da empresa, ou autorização do CNPJ Abitech na Receita só para NFS-e (00233), no mesmo espírito do fluxo parceiro-assinante.</dd>
-          </div>
-          <div>
-            <dt>Emite NF-e ou NFC-e?</dt>
-            <dd>Não. NotaSimples é só NFS-e. Para produto, assine o Emissor completo em <a href="https://abitech.com.br">abitech.com.br</a>.</dd>
-          </div>
-          <div>
-            <dt>Quem cobra?</dt>
-            <dd>A Abitech, via Asaas (Pix, boleto ou cartão) — mesma integração do Emissor.</dd>
-          </div>
-        </dl>
+        <div class="duvidas">
+          <details>
+            <summary>Como entro para emitir?</summary>
+            <p>Use <a href="/entrar">Entrar</a> no topo. Depois de pagar na Abitech e ativar a senha, o painel abre em notasimples.tech.</p>
+          </details>
+          <details>
+            <summary>Preciso de certificado?</summary>
+            <p>Sim — A1 da empresa, ou autorização do CNPJ Abitech na Receita só para NFS-e (00233).</p>
+          </details>
+          <details>
+            <summary>Emite NF-e ou NFC-e?</summary>
+            <p>Não. NotaSimples é só NFS-e. Para produto, assine o Emissor completo em <a href="https://abitech.com.br">abitech.com.br</a>.</p>
+          </details>
+          <details>
+            <summary>Quem cobra?</summary>
+            <p>A Abitech, via Asaas (Pix, boleto ou cartão) — mesma integração do Emissor.</p>
+          </details>
+        </div>
       </div>
     </section>
   </main>
