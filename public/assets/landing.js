@@ -3,7 +3,7 @@
   'use strict';
 
   const BILLING = 'https://abitech.com.br';
-  const PRODUTO_NFSE = 'marca_tbd_nfse';
+  const PRODUTO_NFSE = 'notasimples_nfse';
 
   let PLANOS = {
     nfse_prestador: { id: 'nfse_prestador', nome: 'Prestador', mensal: 39, anualPorMes: 33 },
@@ -130,8 +130,8 @@
     const { porMes } = precoDe(id);
     const nome = PLANOS[id].nome;
     const texto = ciclo === 'mensal'
-      ? `Plano ${nome}, R$ ${brl(porMes)} por mês · trial 15 dias.`
-      : `Plano ${nome}, R$ ${brl(porMes * 12)} por ano · trial 15 dias.`;
+      ? `Plano ${nome}, R$ ${brl(porMes)} por mês · 15 dias de teste após a ativação.`
+      : `Plano ${nome}, R$ ${brl(porMes * 12)} por ano · 15 dias de teste após a ativação.`;
     $('#assinar-titulo').textContent = `Assinar ${nome}`;
     $('#assinar-resumo').textContent = texto;
     const parceiro = $('#f-parceiro');
