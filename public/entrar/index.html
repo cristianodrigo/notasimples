@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar — NotaSimples</title>
+  <meta name="description" content="Acesse o painel NotaSimples para emitir NFS-e.">
+  <meta name="theme-color" content="#06101f">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/assets/favicon.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="miolo">
+      <a class="marca" href="/" aria-label="NotaSimples — início">
+        <img src="/assets/logo-notasimples.jpg" alt="NotaSimples" width="512" height="512">
+      </a>
+      <nav aria-label="Principal">
+        <a href="/#planos">Planos</a>
+        <a href="/#duvidas">Dúvidas</a>
+      </nav>
+      <div class="acoes">
+        <a class="entrar" href="/entrar" aria-current="page">Entrar</a>
+        <a class="botao" href="/#planos">Assinar</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="miolo hero-miolo">
+        <img class="hero-marca" src="/assets/logo-notasimples.jpg" alt="NotaSimples" width="720" height="720">
+        <h1>Entrar no painel</h1>
+        <p class="apoio">Use a conta ativada após o pagamento na Abitech. O painel de emissão NFS-e fica neste domínio.</p>
+        <div class="chamadas">
+          <!-- Quando o overlay SPA estiver no ar, trocar para /login ou rota real do painel. -->
+          <a class="botao" id="cta-painel" href="/">Abrir painel de emissão</a>
+          <a class="botao vazado" href="/#planos">Ainda não assinei</a>
+        </div>
+        <p class="onde">Sem conta? Assine Prestador ou Escritório na home — o checkout é da Abitech; a ativação aponta de volta para cá.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="miolo">
+      <p>NotaSimples · produto Abitech</p>
+      <nav aria-label="Institucional">
+        <a href="https://abitech.com.br/#termos">Termos</a>
+        <a href="https://abitech.com.br/#privacidade">Privacidade</a>
+        <a href="mailto:contato@abitech.com.br">contato@abitech.com.br</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    // MVP: enquanto o SPA do emissor não está publicado, o CTA reforça Assinar / home.
+    // Quando houver /login no mesmo host, apontar para lá.
+    (function () {
+      var el = document.getElementById('cta-painel');
+      if (!el) return;
+      // Preferência futura: se existir cookie/sessão ou path /app, redirecionar.
+      el.addEventListener('click', function (e) {
+        // Sem painel ainda: leva à home com âncora clara.
+        if (!location.pathname.startsWith('/app') && !document.querySelector('[data-painel-pronto]')) {
+          e.preventDefault();
+          location.assign('/#planos');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
