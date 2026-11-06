@@ -37,12 +37,12 @@
       <div class="miolo">
         <div>
           <h1>Entrar no painel</h1>
-          <p class="apoio">Use a conta ativada após o pagamento na Abitech. O painel de emissão NFS-e fica neste domínio.</p>
+          <p class="apoio">Use a conta ativada após o pagamento na Abitech. O painel de emissão NFS-e fica em painel.notasimples.tech.</p>
           <div class="chamadas">
-            <a class="botao" id="cta-painel" href="/">Abrir painel de emissão</a>
+            <a class="botao" href="https://painel.notasimples.tech/">Abrir painel de emissão</a>
             <a class="botao vazado" href="/#planos">Ainda não assinei</a>
           </div>
-          <p class="onde">Sem conta? Assine Prestador ou Escritório na home — o checkout é da Abitech; a ativação aponta de volta para cá.</p>
+          <p class="onde">Sem conta? Assine Prestador ou Escritório na home — o checkout é da Abitech; a ativação aponta para o painel.</p>
         </div>
       </div>
     </section>
@@ -58,17 +58,5 @@
       </nav>
     </div>
   </footer>
-  <script>
-    (function () {
-      var el = document.getElementById('cta-painel');
-      if (!el) return;
-      el.addEventListener('click', function (e) {
-        if (!location.pathname.startsWith('/app') && !document.querySelector('[data-painel-pronto]')) {
-          e.preventDefault();
-          location.assign('/#planos');
-        }
-      });
-    })();
-  </script>
 </body>
 </html>

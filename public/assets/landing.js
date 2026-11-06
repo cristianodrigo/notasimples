@@ -3,11 +3,17 @@
   'use strict';
 
   const BILLING = 'https://abitech.com.br';
-  const PRODUTO_NFSE = 'notasimples_nfse';
+  const PRODUTO_NFSE = 'marca_tbd_nfse';
 
   let PLANOS = {
-    nfse_prestador: { id: 'nfse_prestador', nome: 'Prestador', mensal: 39, anualPorMes: 33 },
-    nfse_escritorio: { id: 'nfse_escritorio', nome: 'Escritório', mensal: 129, anualPorMes: 109 },
+    nfse_prestador: {
+      id: 'nfse_prestador', nome: 'Prestador', mensal: 39, anualPorMes: 33,
+      maxEmpresas: 2, maxUsuarios: 3, trialDias: 15,
+    },
+    nfse_escritorio: {
+      id: 'nfse_escritorio', nome: 'Escritório', mensal: 129, anualPorMes: 109,
+      maxEmpresas: 20, maxUsuarios: 10, trialDias: 15,
+    },
   };
   let ciclo = 'mensal';
   let planoEscolhido = null;
@@ -96,6 +102,25 @@
     });
   }
 
+  function renderizarLimites() {
+    for (const id of Object.keys(PLANOS)) {
+      const p = PLANOS[id];
+      if (!p) continue;
+      const emp = $(`[data-limite="${id}-empresas"]`);
+      const usr = $(`[data-limite="${id}-usuarios"]`);
+      if (emp && Number.isFinite(Number(p.maxEmpresas))) {
+        emp.textContent = `até ${Number(p.maxEmpresas)}`;
+      }
+      if (usr && Number.isFinite(Number(p.maxUsuarios))) {
+        usr.textContent = `até ${Number(p.maxUsuarios)}`;
+      }
+      const texto = $(`[data-limite-texto="${id}"]`);
+      if (texto && Number.isFinite(Number(p.maxEmpresas)) && Number.isFinite(Number(p.maxUsuarios))) {
+        texto.textContent = `Até ${Number(p.maxEmpresas)} empresas · ${Number(p.maxUsuarios)} usuários`;
+      }
+    }
+  }
+
   async function carregarPlanos() {
     try {
       const r = await fetch(`${BILLING}/api/planos?produto=${encodeURIComponent(PRODUTO_NFSE)}`, {
@@ -111,12 +136,16 @@
             nome: p.id === 'nfse_prestador' ? 'Prestador' : 'Escritório',
             mensal: p.mensal,
             anualPorMes: p.anualPorMes,
+            maxEmpresas: p.maxEmpresas,
+            maxUsuarios: p.maxUsuarios,
+            trialDias: p.trialDias,
           };
         }
       }
       if (Object.keys(novo).length) {
         PLANOS = novo;
         renderizarPrecos();
+        renderizarLimites();
       }
     } catch { /* fallback local */ }
   }
@@ -217,6 +246,7 @@
     guardarParceiro();
     demonstrar();
     renderizarPrecos();
+    renderizarLimites();
     carregarPlanos();
 
     $$('.ciclo button').forEach((b) => b.addEventListener('click', () => {
